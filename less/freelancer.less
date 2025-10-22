@@ -5,8 +5,12 @@
 // BASE STYLES
 // ===========================================
 
-body {
+html, body {
 	overflow-x: hidden;
+	max-width: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 p {
@@ -102,9 +106,42 @@ header {
 	text-align: center;
 	background: @brand-success;
 	color: white;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+
+	// Background image as pseudo-element for better control
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: url('../assets/banner-1600x1040.png') no-repeat center center;
+		background-size: cover;
+		background-attachment: scroll;
+		z-index: 0;
+	}
+
+	// Darker overlay for better text readability
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.65);
+		z-index: 1;
+	}
+
 	.container {
 		padding-top: 100px;
 		padding-bottom: 50px;
+		position: relative;
+		z-index: 2;
 	}
 	img {
 		display: block;
@@ -122,6 +159,15 @@ header {
 			font-size: 1.25em;
 			font-weight: 300;
 		}
+	}
+}
+
+// Large screens: use contain, adjust position, and enable fixed parallax
+@media(min-width:2200px) {
+	header:after {
+		background-size: contain;
+		background-position: center -50px;
+		background-attachment: fixed;
 	}
 }
 
@@ -183,6 +229,14 @@ header {
 .navbar-default,
 .navbar-inverse {
 	border: none;
+	background-color: @header-bg;
+}
+
+.navbar-brand {
+	padding: 10px;
+	img {
+		display: inline-block
+	}
 }
 
 section {
@@ -272,7 +326,7 @@ section.success {
 	&:focus,
 	&:active,
 	&.active {
-		color: @brand-accent;
+		color: #000000;
 		background: white;
 		border: solid 2px white;
 	}
@@ -282,19 +336,26 @@ section.success {
     position: relative;
     margin-bottom: 0;
     padding-bottom: 0.5em;
-    border-bottom: 1px solid @gray-lighter;
+    border-bottom: 2px solid @gray;
     input,
-    textarea {
+    textarea,
+    select {
 	    z-index: 1;
 	    position: relative;
-	    padding-right: 0;
-	    padding-left: 0;
-	    border: none;
-	    border-radius: 0;
+	    padding: 10px 12px;
+	    border: 1px solid @gray;
+	    border-radius: 4px;
 	    font-size: 1.5em;
-	    background: none;
+	    background: @white;
 	    box-shadow: none !important;
 	    resize: none;
+	    color: @gray-dark;
+
+	    &:focus {
+	        border-color: @brand-accent;
+	        outline: none;
+	        background: @white;
+	    }
     }
     label {
 	    display: block;
@@ -314,7 +375,7 @@ section.success {
     }
     &::not(:first-child) {
 	    padding-left: 14px;
-	    border-left: 1px solid @gray-lighter;
+	    border-left: 2px solid @gray;
     }
 }
 
@@ -332,7 +393,7 @@ section.success {
 }
 
 form .row:first-child .floating-label-form-group {
-    border-top: 1px solid @gray-lighter;
+    border-top: 2px solid @gray;
 }
 
 footer {
