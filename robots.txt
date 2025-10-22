@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.midnightexpresslkn.com/sitemap.xml
+
+# Block access to certain directories (if needed in future)
+# Disallow: /admin/
+# Disallow: /private/
