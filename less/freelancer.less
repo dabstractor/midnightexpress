@@ -336,17 +336,17 @@ section.success {
     position: relative;
     margin-bottom: 0;
     padding-bottom: 0.5em;
-    border-bottom: 2px solid @gray;
+    border-bottom: none;
     input,
     textarea,
     select {
 	    z-index: 1;
 	    position: relative;
 	    padding: 10px 12px;
-	    border: 1px solid @gray;
+	    border: 1px solid #d0d0d0;
 	    border-radius: 4px;
 	    font-size: 1.5em;
-	    background: @white;
+	    background: #f9f9f9;
 	    box-shadow: none !important;
 	    resize: none;
 	    color: @gray-dark;
@@ -354,7 +354,7 @@ section.success {
 	    &:focus {
 	        border-color: @brand-accent;
 	        outline: none;
-	        background: @white;
+	        background: #fff;
 	    }
     }
     label {
@@ -375,7 +375,7 @@ section.success {
     }
     &::not(:first-child) {
 	    padding-left: 14px;
-	    border-left: 2px solid @gray;
+	    border-left: none;
     }
 }
 
@@ -393,7 +393,7 @@ section.success {
 }
 
 form .row:first-child .floating-label-form-group {
-    border-top: 2px solid @gray;
+    border-top: none;
 }
 
 footer {
