@@ -71,9 +71,9 @@
       "email": "don@midnightexpresslkn.com",
       "telephone": "+19804229125",
       "sameAs": [
-        "http://facebook.com/squarespace",
-        "http://Nextdoor.com/squarespace",
-        "http://Messenger.com/squarespace"
+        "https://www.facebook.com/p/Midnight-Express-Lkn-100092021271700/",
+        "https://nextdoor.com/pages/midnight-express-lkn-sherrills-ford-nc/",
+        "https://www.yelp.com/biz/midnight-express-lkn-denver?osq=midnight+express+lkn+rides"
       ]
     }
     </script>
@@ -159,7 +159,7 @@
                 <div class="col-lg-12">
                     <img class="img-responsive" src="assets/images/logo-512.png" alt="Midnight Express LKN - Five Star Airport Shuttle Service">
                     <div class="intro-text">
-                        <span class="name">Five Star Family Owned Airport Shuttle Service</span>
+                        <h1 class="name">Five Star Family Owned Airport Shuttle Service</h1>
                         <hr class="star-light">
                         <span class="skills">CLT Airport Transportation from Denver and Sherrills Ford NC</span>
                         <div class="mt-lg">
@@ -243,7 +243,10 @@
                 </div>
             </div>
             <div class="row mt-lg">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-5">
+                    <img src="assets/images/IMG_7246.jpeg" alt="Charlotte Douglas International Airport" class="img-responsive" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                </div>
+                <div class="col-lg-7">
                     <p class="about-text">Midnight Express Lkn is a family-owned and operated airport shuttle service based in the Sherrills Ford and Denver, NC surrounding areas. We specialize in reliable, pre-booked flat rate transportation to and from Charlotte Douglas International Airport, Concord Regional Airport, and nearby private airfields.</p>
                     <p class="about-text">Our licensed and insured drivers are known for being punctual, professional, and courteous, and we always use clean, well-maintained minivans. Our drivers track your incoming flight for your convenience so we're always on time to pick you up. We never charge extra for anything. We always offer true flat rate pricing: no surprise up-charges for extra bags or delays.</p>
                     <p class="text-center about-cta">
@@ -314,64 +317,117 @@
                     <!-- Booking Form -->
                     <form id="bookingForm" novalidate">
                         <div class="row control-group">
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Your Name</label>
-                                <input type="text" class="form-control" placeholder="Your Name" id="booking-name" required>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Name *</label>
+                                <input type="text" class="form-control" placeholder="Jane Smith" id="booking-name" required title="Enter your full name">
                                 <p class="help-block text-danger"></p>
                             </div>
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Phone Number</label>
-                                <input type="tel" class="form-control" placeholder="Phone Number" id="booking-phone" required>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="booking-email" required>
-                                <p class="help-block text-danger"></p>
-                            </div>
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Number of Passengers</label>
-                                <input type="number" class="form-control" placeholder="Number of Passengers" id="booking-passengers" min="1" max="10" required>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Phone Number *</label>
+                                <input type="tel" class="form-control" placeholder="5555551234" id="booking-phone" required pattern="[0-9]{10}" title="Enter 10 digit phone number">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-md-12 floating-label-form-group controls">
-                                <label>Pickup Location</label>
-                                <input type="text" class="form-control" placeholder="Pickup Address (e.g., 7740 Marlette Ln, Sherrills Ford, NC)" id="booking-pickup" required>
-                                <p class="help-block text-danger" id="pickup-error"></p>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Email Address</label>
+                                <input type="email" class="form-control" placeholder="email@example.com" id="booking-email" pattern="[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+" title="Enter valid email">
+                                <p class="help-block text-danger"></p>
                             </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-md-12 floating-label-form-group controls">
-                                <label>Destination</label>
-                                <select class="form-control" id="booking-destination" required>
-                                    <option value="">Select Airport</option>
-                                    <option value="CLT">Charlotte Douglas International Airport (CLT)</option>
-                                    <option value="Concord">Concord Regional Airport</option>
-                                    <option value="Private">Private Airport</option>
-                                </select>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Number of Passengers</label>
+                                <input type="number" class="form-control" placeholder="2" id="booking-passengers" min="1" max="10" value="1" title="Enter number of passengers (1-10)">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="row control-group">
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Pickup Date</label>
-                                <input type="date" class="form-control" id="booking-date" required>
+                            <div class="form-group col-md-12 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 10px;">Special Requirements</label>
+                                <div style="margin-top: 0;">
+                                    <label style="display: inline-block; margin-right: 30px; font-weight: normal;">
+                                        <input type="checkbox" name="wheelchair" id="booking-wheelchair" value="Yes" style="margin-right: 5px;" title="Check if wheelchair assistance needed">
+                                        Wheelchair
+                                    </label>
+                                    <label style="display: inline-block; margin-right: 30px; font-weight: normal;">
+                                        <input type="checkbox" name="carseat" id="booking-carseat" value="Yes" style="margin-right: 5px;" title="Check if car seat needed">
+                                        Car Seat
+                                    </label>
+                                    <label style="display: inline-block; font-weight: normal;">
+                                        <input type="checkbox" name="other-requirement" id="booking-other-requirement" value="Yes" style="margin-right: 5px;" title="Check for other special requirements">
+                                        Other
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row control-group" id="other-requirement-section" style="display: none;">
+                            <div class="form-group col-md-12 controls">
+                                <input type="text" class="form-control" placeholder="Please specify other requirements" id="booking-other-text" title="Enter other special requirements">
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Pickup Date *</label>
+                                <input type="date" class="form-control" id="booking-date" required title="Select pickup date">
                                 <p class="help-block text-danger" id="date-error"></p>
                             </div>
-                            <div class="form-group col-md-6 floating-label-form-group controls">
-                                <label>Pickup Time</label>
-                                <input type="time" class="form-control" id="booking-time" required>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Pickup Time *</label>
+                                <input type="time" class="form-control" id="booking-time" required title="Select pickup time">
                                 <p class="help-block text-danger" id="time-error"></p>
                             </div>
                         </div>
+
+                        <!-- Timeline Visualization -->
+                        <div class="row" id="timeline-container" style="display: none; margin-bottom: 20px;">
+                            <div class="col-md-12">
+                                <div style="background: #f5f5f5; padding: 15px; border-radius: 4px; border: 1px solid #ddd;">
+                                    <h4 style="margin-top: 0; font-size: 16px;">Available Times for <span id="timeline-date"></span></h4>
+                                    <p id="timeline-instruction" style="font-size: 12px; color: #666; margin-bottom: 10px; display: none;">Blocked times shown in red (unavailable for booking)</p>
+                                    <div id="timeline-visual"></div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row control-group">
-                            <div class="form-group col-md-12 floating-label-form-group controls">
-                                <label>Special Requests (Optional)</label>
-                                <textarea rows="3" class="form-control" placeholder="Any special requests or additional information?" id="booking-notes"></textarea>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Pickup Address</label>
+                                <input type="text" class="form-control" placeholder="123 Main Street, Denver NC 28037" id="booking-pickup" title="Enter your pickup address">
+                                <p class="help-block text-danger" id="pickup-error"></p>
+                            </div>
+                            <div class="form-group col-md-6 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Destination Address</label>
+                                <input type="text" class="form-control" placeholder="CLT Airport" id="booking-destination" title="Enter your destination address">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="row control-group">
+                            <div class="form-group col-md-12 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 10px;">Airport Pickup? *</label>
+                                <div class="radio" style="margin-top: 0;">
+                                    <label style="display: inline-block; margin-right: 20px; font-weight: normal;">
+                                        <input type="radio" name="airport-pickup" id="airport-pickup-yes" value="Yes" required title="Select if this is an airport pickup"> Yes
+                                    </label>
+                                    <label style="display: inline-block; font-weight: normal;">
+                                        <input type="radio" name="airport-pickup" id="airport-pickup-no" value="No" required title="Select if this is not an airport pickup"> No
+                                    </label>
+                                </div>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="row control-group" id="flight-info-section" style="display: none;">
+                            <div class="form-group col-md-12 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Flight Number</label>
+                                <input type="text" class="form-control" placeholder="AA1234" id="booking-flight" pattern="^[a-zA-Z0-9]{2,3}[\s-]?\d{1,4}[a-zA-Z]?$" title="Enter flight number (e.g., AA1234)">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="row control-group">
+                            <div class="form-group col-md-12 controls">
+                                <label style="display: block; font-weight: bold; margin-bottom: 5px;">Special Notes</label>
+                                <textarea rows="3" class="form-control" id="booking-notes" title="Enter any special requests or notes"></textarea>
                             </div>
                         </div>
                         <br>
@@ -384,7 +440,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <button type="submit" class="btn btn-success btn-lg btn-block">Request Booking</button>
-                                <p class="text-center booking-alternate">Or call us directly: <a href="tel:+19804229125">(980) 422-9125</a></p>
+                                <p class="text-center">Or call us directly: <a href="tel:+19804229125" class="booking-alternate"><b>(980) 422-9125</b></a></p>
                             </div>
                         </div>
                     </form>
@@ -451,13 +507,13 @@
                             </div>
                         </div>
                         <br>
-                        <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <button type="submit" class="btn btn-outline btn-lg">Send</button>
                             </div>
                         </div>
                     </form>
+                    <div id="success"></div>
                 </div>
             </div>
         </div>
@@ -476,16 +532,15 @@
                         <h3>Connect With Us</h3>
                         <ul class="list-inline">
                             <li>
-                                <a href="http://facebook.com/squarespace" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/p/Midnight-Express-Lkn-100092021271700/" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="http://Nextdoor.com/squarespace" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Nextdoor"><i class="fa fa-fw fa-home"></i></a>
+                                <a href="https://nextdoor.com/pages/midnight-express-lkn-sherrills-ford-nc/" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Nextdoor"><i class="fa fa-fw fa-home"></i></a>
                             </li>
                             <li>
-                                <a href="http://Messenger.com/squarespace" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Messenger"><i class="fa fa-fw fa-comments"></i></a>
+                                <a href="https://www.yelp.com/biz/midnight-express-lkn-denver?osq=midnight+express+lkn+rides" class="btn-social btn-outline" target="_blank" rel="noopener" aria-label="Yelp"><i class="fa fa-fw fa-yelp"></i></a>
                             </li>
                         </ul>
-                        <p class="social-note">Note: Social links pending client verification</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Business Hours</h3>

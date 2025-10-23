@@ -5,6 +5,10 @@
 // BASE STYLES
 // ===========================================
 
+html {
+	scroll-padding-top: 100px;
+}
+
 html, body {
 	overflow-x: hidden;
 	max-width: 100%;
@@ -229,7 +233,7 @@ header {
 .navbar-default,
 .navbar-inverse {
 	border: none;
-	background-color: @header-bg;
+	background-color: @black;
 }
 
 .navbar-brand {
@@ -635,11 +639,26 @@ footer {
 
 .booking-alternate {
 	margin-top: @spacing-sm;
-	color: @gray;
+	color: @brand-cta;
 
 	a {
 		font-weight: bold;
 		font-size: @font-size-large;
+		color: @brand-cta;
+	}
+}
+
+// Booking form submit button
+#bookingForm button[type="submit"] {
+	background-color: @brand-cta;
+	border-color: @brand-cta;
+	color: @white;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken(@brand-cta, 10%);
+		border-color: darken(@brand-cta, 10%);
 	}
 }
 
@@ -720,4 +739,80 @@ footer {
 
 .bg-light {
 	background: @gray-lightest;
+}
+
+// Form control focus states (for booking form)
+.form-control:focus {
+	border-color: @brand-accent;
+	outline: none;
+	box-shadow: 0 0 0 0.2rem fade(@brand-accent, 25%);
+}
+
+// ===========================================
+// BOOTSTRAP OVERRIDES
+// ===========================================
+
+// Override Bootstrap's .btn-success to use our CTA color
+.btn-success {
+	background-color: @brand-cta;
+	border-color: @brand-cta;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active,
+	.open > .dropdown-toggle& {
+		background-color: darken(@brand-cta, 10%);
+		border-color: darken(@brand-cta, 12%);
+	}
+}
+
+// Override navbar link hover/focus states
+.navbar-default {
+	.navbar-brand {
+		&:hover,
+		&:focus {
+			color: @brand-cta;
+		}
+	}
+
+	.navbar-nav > li > a {
+		&:hover,
+		&:focus {
+			color: @brand-cta;
+		}
+	}
+}
+
+// Contact form Send button - align with Request Booking button style
+#contactForm button[type="submit"] {
+	background-color: @brand-cta;
+	border-color: @brand-cta;
+	color: @white;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken(@brand-cta, 10%);
+		border-color: darken(@brand-cta, 10%);
+		color: @white;
+	}
+}
+
+// Form validation error styles
+.has-error {
+	.form-control {
+		border-color: #d9534f;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 6px rgba(217, 83, 79, 0.4);
+		
+		&:focus {
+			border-color: #d9534f;
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(217, 83, 79, 0.6);
+		}
+	}
+	
+	label {
+		color: #d9534f;
+	}
 }
