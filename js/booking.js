@@ -529,8 +529,10 @@
             $('#booking-success').html('').hide();
 
             // Collect form data
-            // Build special requirements string from checked options
+            // Build special requirements from checked options
             const specialRequirements = [];
+            let otherRequirementText = '';
+
             if ($('#booking-wheelchair').is(':checked')) {
                 specialRequirements.push('Wheelchair');
             }
@@ -538,9 +540,9 @@
                 specialRequirements.push('Carseat');
             }
             if ($('#booking-other-requirement').is(':checked')) {
-                const otherText = $('#booking-other-text').val().trim();
-                if (otherText) {
-                    specialRequirements.push(otherText);
+                otherRequirementText = $('#booking-other-text').val().trim();
+                if (otherRequirementText) {
+                    specialRequirements.push('__other_option__');
                 }
             }
 
@@ -556,7 +558,8 @@
                 airportPickup: $('input[name="airport-pickup"]:checked').val(),
                 flightNumber: $('#booking-flight').val().trim(),
                 pickupTime: $('#booking-time').val(),
-                specialRequirements: specialRequirements.join(', ')
+                specialRequirements: specialRequirements,
+                otherRequirementText: otherRequirementText
             };
 
             // Validation
@@ -645,41 +648,42 @@
             const originalBtnText = $submitBtn.html();
             $submitBtn.html('<i class="fa fa-spinner fa-spin"></i> Submitting...').prop('disabled', true);
 
-            // Submit to Google Form
-            const googleFormData = new FormData();
+            // Prepare form data for Google Forms (exactly like contact form)
+            var googleFormData = new FormData();
             googleFormData.append('entry.131833412', formData.name);
             googleFormData.append('entry.776900145', formData.phone);
-            if (formData.email) {
-                googleFormData.append('entry.EMAIL_ENTRY_ID', formData.email); // TODO: Get email entry ID
-            }
+            googleFormData.append('entry.121804187', formData.email);
             googleFormData.append('entry.1592582104', formData.pickupDate);
             googleFormData.append('entry.936388405', formData.pickupTime);
             googleFormData.append('entry.1137073125', formData.pickupAddress);
             googleFormData.append('entry.1747359283', formData.destinationAddress);
             googleFormData.append('entry.240227114', formData.passengers);
-            if (formData.specialNotes) {
-                googleFormData.append('entry.NOTES_ENTRY_ID', formData.specialNotes); // TODO: Get notes entry ID
-            }
+            googleFormData.append('entry.1761921696', formData.specialNotes);
             googleFormData.append('entry.1268043435', formData.airportPickup);
-            if (formData.flightNumber) {
-                googleFormData.append('entry.FLIGHT_ENTRY_ID', formData.flightNumber); // TODO: Get flight entry ID
-            }
-            if (formData.specialRequirements) {
-                // Special requirements is a checkbox field - split and add each
-                const requirements = formData.specialRequirements.split(', ');
-                requirements.forEach(function(req) {
+            googleFormData.append('entry.888870986', formData.flightNumber);
+
+            // Special requirements checkboxes
+            if (formData.specialRequirements && formData.specialRequirements.length > 0) {
+                formData.specialRequirements.forEach(function(req) {
                     googleFormData.append('entry.1055055925', req);
                 });
             }
 
+            // Other requirement text (if "Other" was checked)
+            if (formData.otherRequirementText) {
+                googleFormData.append('entry.1055055925.other_option_response', formData.otherRequirementText);
+            }
+
+            // Submit to Google Forms (exactly like contact form)
             $.ajax({
                 url: GOOGLE_FORM_URL,
-                method: 'POST',
+                type: 'POST',
                 data: googleFormData,
                 processData: false,
                 contentType: false,
+                cache: false,
                 complete: function() {
-                    // Google Forms always returns an error due to CORS, but the submission succeeds
+                    // Google Forms always returns an error due to CORS, but the submission actually works
                     const successHtml =
                         '<div class="alert alert-success">' +
                         '<h4><i class="fa fa-check-circle"></i> Booking Request Submitted!</h4>' +
