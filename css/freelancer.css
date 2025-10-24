@@ -684,3 +684,8 @@ footer .footer-contact a {
 .has-error label {
   color: #d9534f;
 }
+
+/* Fix flatpickr input cursor - use normal text cursor instead of pointer */
+.flatpickr-input {
+  cursor: text !important;
+}
